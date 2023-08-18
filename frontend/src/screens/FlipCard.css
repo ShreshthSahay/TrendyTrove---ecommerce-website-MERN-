@@ -1,0 +1,108 @@
+/* FlipCard.css */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.flip-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px; /* Adjust the gap between cards */
+}
+
+.flip-card {
+  flex: 1 1 300px; /* Adjust the width of each card */
+  height: 400px;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  cursor: pointer;
+}
+
+.flip-card:hover {
+  transform: rotateY(-180deg);
+}
+
+.flip-card .front-face,
+.flip-card .back-face {
+  height: 100%;
+  width: 100%;
+  padding: 5px;
+  background: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.flip-card .back-face {
+  transform: rotateY(180deg);
+}
+
+.flip-card img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.flip-card .back-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.flip-card .back-face .title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.flip-card .back-face p {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.flip-card .back-face .price {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.flip-card .back-face button {
+  padding: 8px 16px;
+  background-color: #1cc7d0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.flip-card .back-face button:hover {
+  background-color: #2ede98;
+}
+
+/* Media query for responsive layout */
+@media (max-width: 1200px) {
+  .flip-card {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .flip-card {
+    flex-basis: 100%;
+  }
+}
